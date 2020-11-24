@@ -1,17 +1,22 @@
-import Head from "next/head";
 import React from "react";
-import styles from "../styles/Home.module.css";
 import { getDatabase } from "../src/database";
+import { Layout } from "../components/layout";
 
 const Home = ({ products }) => {
-  return <p>{JSON.stringify(products)}</p>;
-};
+  return ( 
+    <Layout>
+  <p>{JSON.stringify(products)}</p>
+  </Layout>
+  )};
+
+
 
 export async function getServerSideProps() {
   const mongodb = await getDatabase();
 
   const products = await mongodb.db().collection("products").find().toArray();
   console.log(products);
+
 
   return {
     props: {
