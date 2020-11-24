@@ -12,34 +12,6 @@ const Home = ({ products, shop }) => {
     <>
       <Layout>
         <div>
-          <h1>Shop</h1>
-          {/* <p>{JSON.stringify(shop)}</p> */}
-
-          <hr />
-          <div className="magasin">
-            <div className="ligneDeCaisse">Caisse</div>
-            <div className="entree">Entrée</div>
-
-            {shop &&
-              shop.map((tata) => {
-                return (
-                  <>
-                    <div style={styles.surface}>
-                      <div className="rayon" id={tata.slug}>
-                        {tata.name}
-
-                        {products &&
-                          products.map((toto) => {
-                            return toto.slug === tata.slug ? (
-                              <p>{toto.designation}</p>
-                            ) : null;
-                          })}
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-          </div>
         </div>
       </Layout>
     </>
