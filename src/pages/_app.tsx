@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import "../styles/SearchBar.css";
+import '../../public/styles/globals.css'
+import "../../public/styles/SearchBar.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
