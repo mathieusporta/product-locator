@@ -1,7 +1,6 @@
-import Head from "next/head";
 import React from "react";
-import styles from "../styles/Home.module.css";
 import { getDatabase } from "../src/database";
+import { Layout } from "../components/layout";
 
 const Home = ({ products, shop }) => {
   const styles = {
@@ -11,6 +10,7 @@ const Home = ({ products, shop }) => {
   };
   return (
     <>
+      <Layout>
       <div>
         <h1>Shop</h1>
         {/* <p>{JSON.stringify(shop)}</p> */}
@@ -41,9 +41,12 @@ const Home = ({ products, shop }) => {
             })}
         </div>
       </div>
+      </Layout>
     </>
   );
+
 };
+
 
 export async function getServerSideProps() {
   const mongodb = await getDatabase();
