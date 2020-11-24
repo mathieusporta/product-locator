@@ -2,7 +2,6 @@ import React from "react";
 import { getDatabase } from "../src/database";
 import { Layout } from "../components/layout";
 
-
 const Home = ({ products, shop }) => {
   const styles = {
     surface: {
@@ -11,6 +10,7 @@ const Home = ({ products, shop }) => {
   };
   return (
     <>
+      <Layout>
       <div>
         <h1>Shop</h1>
         {/* <p>{JSON.stringify(shop)}</p> */}
@@ -41,18 +41,11 @@ const Home = ({ products, shop }) => {
             })}
         </div>
       </div>
+      </Layout>
     </>
   );
-    
-const Home = ({ products }) => {
 
-  return ( 
-    <Layout>
-  <p>{JSON.stringify(products)}</p>
-  </Layout>
-  )};
-
-
+};
 
 
 export async function getServerSideProps() {
@@ -63,10 +56,6 @@ export async function getServerSideProps() {
     .collection("products")
     .find({ slug: "peinture" })
     .toArray();
-
-  const products = await mongodb.db().collection("products").find().toArray();
-
-
 
   return {
     props: {
