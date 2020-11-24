@@ -1,5 +1,5 @@
 import React from "react";
-import { getDatabase } from "../src/database";
+import { getDatabase } from "../database";
 import { Layout } from "../components/layout";
 
 const Home = ({ products, shop }) => {
