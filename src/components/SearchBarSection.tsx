@@ -1,58 +1,37 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { MDBCol, MDBIcon } from "mdbreact";
 
 const SearchBarSection = () => {
-  const [products, setProducts] = useState([]);
-
-  const [search, setSearch] = useState("");
-
-  const filteredProducts = products.filter((product) => {
-    if (
-      product.tags.toLowerCase().includes(search) ||
-      product.title.toLowerCase().includes(search) ||
-      product.category.toLowerCase().includes(search)
-    ) {
-      return product;
-    }
-  });
-
+  const styles = {
+    surface: {
+      padding: "20px",
+    },
+  };
+  
   return (
-    <div className="searchBarSection">
-      <div className="searchBar">
-        <input
-          className="input"
-          onChange={(e) => {
-            setSearch(e.target.value.toLowerCase());
-          }}
-        />
-        <button className="button">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            
+    <>
+      <div>
+        <MDBCol md="6">
+          <form
+            method="GET"
+            className="form-inline mt-4 mb-4"
+            action="/listeProduits"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            ></path>
-          </svg>
-        </button>
+            <MDBIcon icon="search" />
+            <input
+              className="form-control form-control-sm ml-3 w-75"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+              name="search"
+              
+             
+            />
+            {/* <input type="hidden" value={products} name="designation" /> */}
+          </form>
+        </MDBCol>
       </div>
-      <div className="display">
-        {filteredProducts.map((product) => (
-          <div className="product">
-            <h6>{product.category}</h6>
-            <h3>{product.title}</h3>
-            <h5>{product.price}</h5>
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
-
 export default SearchBarSection;

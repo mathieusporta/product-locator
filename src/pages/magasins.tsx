@@ -3,7 +3,8 @@ import { getDatabase } from "../database";
 import { Layout } from "../components/layout";
 import { MDBCol, MDBIcon } from "mdbreact";
 import Link from "next/link";
-import Shop from "../components/magasin";
+import { Header } from "../components/header";
+import SearchBarSection from "../components/SearchBarSection";
 
 const Shopiii = ({ products, shop }) => {
   const styles = {
@@ -13,24 +14,10 @@ const Shopiii = ({ products, shop }) => {
   };
   return (
     <>
-      <div> 
+      <Header />
+      <SearchBarSection />
+      <div>
         <div></div>
-        <MDBCol md="6">
-          <form
-            method="GET"
-            className="form-inline mt-4 mb-4"
-            action="/listeProduits"
-          >
-            <MDBIcon icon="search" />
-            <input
-              className="form-control form-control-sm ml-3 w-75"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-              name="search"
-            />
-          </form>
-        </MDBCol>
         <hr />
         <div className="magasin">
           <div className="topmag">

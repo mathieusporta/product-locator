@@ -7,7 +7,8 @@ import {
   MDBCol,
   MDBIcon,
 } from "mdbreact";
-import Shop from "../components/magasin";
+import { Header } from "../components/header";
+
 
 const ListeProduit = ({ products, shop }) => {
   const styles = {
@@ -17,6 +18,7 @@ const ListeProduit = ({ products, shop }) => {
   };
   return (
     <>
+    <Header/>
       <MDBTable>
         <MDBTableHead>
           <tr>

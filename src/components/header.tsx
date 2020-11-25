@@ -14,6 +14,7 @@ export const Header = () => {
       margin: 15,
     },
     active: {
+      cursor:"pointer",
       margin: 15,
       color: "blue",
     },
@@ -44,11 +45,7 @@ export const Header = () => {
           Connexion
         </span>
       </Link>
-      <Link href="/" passHref>
-        <span style={router.pathname === "/" ? styles.active : styles.link}>
-          Search
-        </span>
-      </Link>
+      
     </div>
   );
 };
