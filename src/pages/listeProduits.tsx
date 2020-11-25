@@ -7,43 +7,77 @@ import {
   MDBCol,
   MDBIcon,
 } from "mdbreact";
-import { Header } from "../components/header";
+import { useRouter } from "next/router";
+import ReactPaginate from "react-paginate";
 
+const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
 
-const ListeProduit = ({ products, shop }) => {
   const styles = {
     surface: {
       padding: "20px",
     },
   };
+  
+  const router = useRouter();
+  // console.log(router);
+
+  const paginationHandler = (page) => {
+    const currentPath = router.pathname;
+    const currentQuery = { ...router.query };
+    currentQuery.page = page.selected + 1;
+    router
+      .push({
+        pathname: currentPath,
+        query: currentQuery,
+      })
+      .then(() => window.scrollTo(0, 0));
+  };
+
   return (
     <>
-    <Header/>
-      <MDBTable>
-        <MDBTableHead>
-          <tr>
-            <th>#</th>
-            <th>Réference</th>
-            <th>Désignation</th>
-            <th>Rayon</th>
-          </tr>
-        </MDBTableHead>
-        {/* {JSON.stringify(products)} */}
+      <div>
+        <MDBTable>
+          <MDBTableHead>
+            <tr>
+              <th>#</th>
+              <th>Réference</th>
+              <th>Désignation</th>
+              <th>Rayon</th>
+            </tr>
+          </MDBTableHead>
+          {/* {JSON.stringify(products)} */}
 
-        <MDBTableBody>
-          {products &&
-            products.map((produit, index) => {
-              return (
-                <tr> 
-                  <td>{index + 1}</td>
-                  <td>{produit.reference}</td>
-                  <td>{produit.designation}</td>
-                  <td>{produit.rayon}</td>
-                </tr>
-              );
-            })}
-        </MDBTableBody>
-      </MDBTable>
+          <MDBTableBody>
+            {products &&
+              products.map((produit, index) => {
+                return (
+                  <tr key={produit._id}>
+                    <td>{index + 1}</td>
+                    <td>{produit.reference}</td>
+                    <td>{produit.designation}</td>
+                    <td>{produit.rayon}</td>
+                  </tr>
+                );
+              })}
+          </MDBTableBody>
+        </MDBTable>
+        <div className="paginateCenter">
+          <ReactPaginate
+            onPageChange={paginationHandler}
+            initialPage={currentPage - 1}
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            previousLabel="Precedent"
+            nextLabel="Suivant"
+            activeClassName="activated"
+            breakLabel="..."
+            pageClassName="paginate"
+            containerClassName="custom-paginate"
+          />
+        </div>
+      </div>
+  
       <div>
         <MDBCol md="6">
           {/* <form
@@ -64,20 +98,18 @@ const ListeProduit = ({ products, shop }) => {
           {shop &&
             shop.map((magasin) => {
               return (
-                <>
-                  <div style={styles.surface} key={magasin._id}>
-                    <div className="rayon" id={magasin.slug}>
-                      {magasin.name}
-                      <br />
-                      {products &&
-                        products.map((produit) => {
-                          return produit.slug === magasin.slug ? (
-                            <MDBIcon icon="check" key={produit._id} />
-                          ) : null;
-                        })}
-                    </div>
+                <div style={styles.surface} key={magasin._id}>
+                  <div className="rayon" id={magasin.slug}>
+                    {magasin.name}
+                    <br />
+                    {products &&
+                      products.map((produit) => {
+                        return produit.slug === magasin.slug ? (
+                          <MDBIcon icon="check" key={produit._id} />
+                        ) : null;
+                      })}
                   </div>
-                </>
+                </div>
               );
             })}
         </div>
@@ -88,7 +120,8 @@ const ListeProduit = ({ products, shop }) => {
 
 export async function getServerSideProps(context) {
   const toto = context.query.search;
-  console.log(toto);
+  const page = context.query.page || 1;
+  const nPerPage = 5;
 
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
@@ -96,12 +129,23 @@ export async function getServerSideProps(context) {
     .db()
     .collection("products")
     .find({ designation: new RegExp(toto, "i") })
-    // .limit(10)
+    .skip(page > 0 ? (page - 1) * nPerPage : 0)
+    .limit(nPerPage)
     .toArray();
+
+  const productsTotal = await mongodb
+    .db()
+    .collection("products")
+    .find({ designation: new RegExp(toto, "i") })
+    .count();
+
   return {
     props: {
       shop: JSON.parse(JSON.stringify(shop)),
       products: JSON.parse(JSON.stringify(products)),
+      // currentPage,
+      pageCount: Math.ceil(productsTotal / nPerPage),
+
     },
   };
 }
