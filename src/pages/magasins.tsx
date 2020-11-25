@@ -54,6 +54,7 @@ const Shop = ({ products, shop }) => {
 };
 export async function getServerSideProps(context) {
   const toto = context.query.search;
+
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
   const products = await mongodb
