@@ -11,8 +11,7 @@ const Home = ({ products, shop }) => {
   return (
     <>
       <Layout>
-        <div>
-        </div>
+
       </Layout>
     </>
   );

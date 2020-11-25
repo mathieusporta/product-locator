@@ -10,57 +10,57 @@ const Shop = ({ products, shop }) => {
   };
   return (
     <>
-      <Layout>
-        <div>
-          <MDBCol md="6">
-            <form className="form-inline mt-4 mb-4">
-              <MDBIcon icon="search" />
-              <input
-                className="form-control form-control-sm ml-3 w-75"
-                type="text"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
-          </MDBCol>
-          <hr />
-          <div className="magasin">
-            <div className="topmag">
-              <div className="ligneDeCaisse">Caisse</div>
-              <div className="entree">Entrée</div>
-            </div>
-            {shop &&
-              shop.map((tata) => {
-                return (
-                  <>
-                    <div style={styles.surface}>
-                      <div className="rayon" id={tata.slug}>
-                        {tata.name}
-                        {products &&
-                          products.map((toto) => {
-                            return toto.slug === tata.slug ? (
-                              <p>{toto.designation}</p>
-                            ) : null;
-                          })}
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
+      <div>
+        <MDBCol md="6">
+          <form className="form-inline mt-4 mb-4" action="/search">
+            <MDBIcon icon="search" />
+            <input
+              className="form-control form-control-sm ml-3 w-75"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+              name="search"
+            />
+          </form>
+        </MDBCol>
+        <hr />
+        <div className="magasin">
+          <div className="topmag">
+            <div className="ligneDeCaisse">Caisse</div>
+            <div className="entree">Entrée</div>
           </div>
+          {shop &&
+            shop.map((tata) => {
+              return (
+                <>
+                  <div style={styles.surface}>
+                    <div className="rayon" id={tata.slug}>
+                      {tata.name}
+                      {products &&
+                        products.map((toto) => {
+                          return toto.slug === tata.slug ? (
+                            <p>{toto.designation}</p>
+                          ) : null;
+                        })}
+                    </div>
+                  </div>
+                </>
+              );
+            })}
         </div>
-      </Layout>
+      </div>
     </>
   );
 };
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const toto = context.query.search;
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
   const products = await mongodb
     .db()
     .collection("products")
-    .find({ slug: "peinture" })
-    .limit(1)
+    .find({ designation: new RegExp(toto, "i") })
+    .limit(10)
     .toArray();
   return {
     props: {
