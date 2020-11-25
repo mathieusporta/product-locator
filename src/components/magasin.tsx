@@ -3,9 +3,8 @@ import { getDatabase } from "../database";
 import { Layout } from "../components/layout";
 import { MDBCol, MDBIcon } from "mdbreact";
 import Link from "next/link";
-import Shop from "../components/magasin";
 
-const Shopiii = ({ products, shop }) => {
+const Shop = ({ products, shop }) => {
   const styles = {
     surface: {
       padding: "20px",
@@ -13,14 +12,9 @@ const Shopiii = ({ products, shop }) => {
   };
   return (
     <>
-      <div> 
-        <div></div>
+      <div>
         <MDBCol md="6">
-          <form
-            method="GET"
-            className="form-inline mt-4 mb-4"
-            action="/listeProduits"
-          >
+          <form method="GET" className="form-inline mt-4 mb-4" action="/listeProduits">
             <MDBIcon icon="search" />
             <input
               className="form-control form-control-sm ml-3 w-75"
@@ -29,6 +23,7 @@ const Shopiii = ({ products, shop }) => {
               aria-label="Search"
               name="search"
             />
+            {/* <input type="hidden" value={products} name="designation" /> */}
           </form>
         </MDBCol>
         <hr />
@@ -49,7 +44,8 @@ const Shopiii = ({ products, shop }) => {
                         products.map((produit) => {
                           return produit.slug === magasin.slug ? (
                             <MDBIcon icon="check" key={produit._id} />
-                          ) : null;
+                          ) : // <p>{produit.designation}</p>
+                          null;
                         })}
                     </div>
                   </div>
@@ -79,4 +75,4 @@ export async function getServerSideProps(context) {
     },
   };
 }
-export default Shopiii;
+export default Shop;

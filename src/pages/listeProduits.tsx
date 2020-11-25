@@ -1,11 +1,15 @@
 import React from "react";
 import { getDatabase } from "../database";
-import { Layout } from "../components/layout";
-import { MDBCol, MDBIcon } from "mdbreact";
-import Link from "next/link";
+import {
+  MDBTable,
+  MDBTableBody,
+  MDBTableHead,
+  MDBCol,
+  MDBIcon,
+} from "mdbreact";
 import Shop from "../components/magasin";
 
-const Shopiii = ({ products, shop }) => {
+const ListeProduit = ({ products, shop }) => {
   const styles = {
     surface: {
       padding: "20px",
@@ -13,23 +17,41 @@ const Shopiii = ({ products, shop }) => {
   };
   return (
     <>
-      <div> 
-        <div></div>
+      <MDBTable>
+        <MDBTableHead>
+          <tr>
+            <th>#</th>
+            <th>Réference</th>
+            <th>Désignation</th>
+            <th>Rayon</th>
+          </tr>
+        </MDBTableHead>
+        {/* {JSON.stringify(products)} */}
+
+        <MDBTableBody>
+          {products &&
+            products.map((produit, index) => {
+              return (
+                <tr> 
+                  <td>{index + 1}</td>
+                  <td>{produit.reference}</td>
+                  <td>{produit.designation}</td>
+                  <td>{produit.rayon}</td>
+                </tr>
+              );
+            })}
+        </MDBTableBody>
+      </MDBTable>
+      <div>
         <MDBCol md="6">
-          <form
+          {/* <form
             method="GET"
             className="form-inline mt-4 mb-4"
             action="/listeProduits"
           >
             <MDBIcon icon="search" />
-            <input
-              className="form-control form-control-sm ml-3 w-75"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-              name="search"
-            />
-          </form>
+           
+          </form> */}
         </MDBCol>
         <hr />
         <div className="magasin">
@@ -61,15 +83,17 @@ const Shopiii = ({ products, shop }) => {
     </>
   );
 };
+
 export async function getServerSideProps(context) {
-  const produit = context.query.search;
+  const toto = context.query.search;
+  console.log(toto);
 
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
   const products = await mongodb
     .db()
     .collection("products")
-    .find({ designation: new RegExp(produit, "i") })
+    .find({ designation: new RegExp(toto, "i") })
     // .limit(10)
     .toArray();
   return {
@@ -79,4 +103,4 @@ export async function getServerSideProps(context) {
     },
   };
 }
-export default Shopiii;
+export default ListeProduit;
