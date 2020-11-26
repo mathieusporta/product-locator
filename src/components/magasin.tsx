@@ -1,7 +1,9 @@
 import React from "react";
 import { MDBCol, MDBIcon } from "mdbreact";
 
-const MagasinVisu = ({ products, shop }) => {
+
+const MagasinVisu = ({ products, shop, visible }) => {
+
   const styles = {
     surface: {
       padding: "20px",
@@ -26,7 +28,10 @@ const MagasinVisu = ({ products, shop }) => {
                   {products &&
                     products.map((produit) => {
                       return produit.slug === magasin.slug ? (
-                        <MDBIcon icon="check" key={produit._id} />
+
+                        <MDBIcon icon="check" key={produit._id}  className={visible === produit._id ? "bg-success" : null}
+                        />
+
                       ) : null;
                     })}
                 </div>

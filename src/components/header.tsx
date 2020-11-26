@@ -24,7 +24,6 @@ export const Header = () => {
       borderRadius: "50px",
     },
   };
-
   return (
     <div style={styles.header}>
       <Link href="/" passHref>
@@ -39,21 +38,24 @@ export const Header = () => {
           }
         >
           Liste produit
+
         </span>
       </Link>
-
-      <span className="">
+      <Link href="/" passHref>
+        <span style={router.pathname === "/" ? styles.active : styles.link}>
+          Connexion
+        </span>
+      </Link>
+      <div className="my-2 my-lg-0">
         {!session && (
           <>
-            <span className="mr-2">Not signed in</span>
-
-            <button className="btn btn-primary" onClick={signIn}>
-              Sign in
-            </button>
+            Not signed in <br />
+            <button onClick={signIn}>Sign in</button>
           </>
         )}
         {session && (
           <>
+
           {
             session.user.name ?
             <span className="mr-2">{session.user.name}</span> : <span className="mr-2">{session.user.email}</span>

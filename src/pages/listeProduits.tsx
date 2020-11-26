@@ -6,14 +6,18 @@ import PaginationVisu from "../components/pagination";
 import TableauProduitVisu from "../components/tableauProduits";
 
 const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
+
+  const [Visible, setVisible] = React.useState("");
   return (
     <>
       <Header />
+
       <div>
-        <TableauProduitVisu products={products} />
+        <TableauProduitVisu products={products} visible={Visible} setVisible={setVisible}/>
         <PaginationVisu currentPage={currentPage} pageCount={pageCount} />
       </div>
-      <MagasinVisu products={products} shop={shop} />
+      <MagasinVisu products={products} shop={shop} visible={Visible} />
+
     </>
   );
 };

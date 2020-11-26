@@ -1,7 +1,9 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
-const TableauProduitVisu = ({ products }) => {
+
+const TableauProduitVisu = ({ products, visible, setVisible }) => {
+  
   return (
     <MDBTable>
       <MDBTableHead>
@@ -18,7 +20,13 @@ const TableauProduitVisu = ({ products }) => {
         {products &&
           products.map((produit, index) => {
             return (
-              <tr key={produit._id}>
+
+              <tr
+                key={produit._id}
+                className={visible === produit._id ? "bg-success" : null}
+                onClick={() => setVisible(produit._id)}
+              >
+
                 <td>{index + 1}</td>
                 <td>{produit.reference}</td>
                 <td>{produit.designation}</td>
