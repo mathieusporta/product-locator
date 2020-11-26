@@ -41,13 +41,8 @@ export const Header = () => {
           Liste produit
         </span>
       </Link>
-      <Link href="/" passHref>
-        <span style={router.pathname === "/" ? styles.active : styles.link}>
-          Connexion
-        </span>
-      </Link>
 
-      <div className="my-2 my-lg-0">
+      <span className="">
         {!session && (
           <>
             <span className="mr-2">Not signed in</span>
@@ -59,7 +54,10 @@ export const Header = () => {
         )}
         {session && (
           <>
-            <span className="mr-2">{session.user.name}</span>
+          {
+            session.user.name ?
+            <span className="mr-2">{session.user.name}</span> : <span className="mr-2">{session.user.email}</span>
+          }
             {session.user.image ? (
               <img
                 src={session.user.image}
@@ -72,7 +70,7 @@ export const Header = () => {
             </button>
           </>
         )}
-      </div>
+      </span>
     </div>
   );
 };
