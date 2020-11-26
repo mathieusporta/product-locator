@@ -7,7 +7,7 @@ const SearchBarSection = () => {
       padding: "20px",
     },
   };
-  
+
   return (
     <>
       <div>
@@ -24,8 +24,6 @@ const SearchBarSection = () => {
               placeholder="Search"
               aria-label="Search"
               name="search"
-              
-             
             />
             {/* <input type="hidden" value={products} name="designation" /> */}
           </form>
