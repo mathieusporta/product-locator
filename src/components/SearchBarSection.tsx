@@ -10,7 +10,7 @@ const SearchBarSection = () => {
 
   return (
     <>
-      <div>
+      <div className="d-flex justify-content-center">
         <MDBCol md="6">
           <form
             method="GET"

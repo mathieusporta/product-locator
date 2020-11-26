@@ -4,6 +4,7 @@ import { getDatabase } from "../database";
 import MagasinVisu from "../components/magasin";
 import PaginationVisu from "../components/pagination";
 import TableauProduitVisu from "../components/tableauProduits";
+import SearchBarSection from "../components/SearchBarSection";
 
 const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
 
@@ -11,6 +12,8 @@ const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
   return (
     <>
       <Header />
+
+      <SearchBarSection />
 
       <div>
         <TableauProduitVisu products={products} visible={Visible} setVisible={setVisible}/>

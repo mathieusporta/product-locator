@@ -82,3 +82,8 @@ a {
 .paginateCenter{
   text-align: -webkit-center;
 }
+
+.navbar {
+  display: inline;
+}
+
