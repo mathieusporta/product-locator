@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 export const Header = () => {
   const router = useRouter();
+  const [session, loading] = useSession();
   const styles = {
     header: {
       margin: 20,
@@ -14,9 +16,12 @@ export const Header = () => {
       margin: 15,
     },
     active: {
-      cursor:"pointer",
+      cursor: "pointer",
       margin: 15,
       color: "blue",
+    },
+    imageProfile: {
+      borderRadius: "50px",
     },
   };
 
@@ -28,7 +33,11 @@ export const Header = () => {
         </span>
       </Link>
       <Link href="/listeProduits" passHref>
-        <span style={router.pathname === "/listeProduits" ? styles.active : styles.link}>
+        <span
+          style={
+            router.pathname === "/listeProduits" ? styles.active : styles.link
+          }
+        >
           Liste produit
         </span>
       </Link>
@@ -37,7 +46,33 @@ export const Header = () => {
           Connexion
         </span>
       </Link>
-      
+
+      <div className="my-2 my-lg-0">
+        {!session && (
+          <>
+            <span className="mr-2">Not signed in</span>
+
+            <button className="btn btn-primary" onClick={signIn}>
+              Sign in
+            </button>
+          </>
+        )}
+        {session && (
+          <>
+            <span className="mr-2">{session.user.name}</span>
+            {session.user.image ? (
+              <img
+                src={session.user.image}
+                width="40px"
+                style={styles.imageProfile}
+              />
+            ) : null}
+            <button className="btn btn-primary ml-2" onClick={signOut}>
+              Sign out
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

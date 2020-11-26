@@ -79,3 +79,7 @@ a {
   padding: 0 10px;
   cursor: pointer;
 }
+
+.paginateCenter{
+  text-align: -webkit-center;
+}
