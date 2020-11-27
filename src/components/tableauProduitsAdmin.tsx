@@ -1,5 +1,6 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import Link from "next/link";
 
 
 
@@ -35,7 +36,9 @@ const TableauProduitsAdmin = ({ products }) => {
           })}
       </MDBTableBody>
     </MDBTable>
+    <Link href="/create/newProduct" passHref>
      <button className="btn btn-success w-100">Add</button>
+     </Link>
      </>
   );
 };

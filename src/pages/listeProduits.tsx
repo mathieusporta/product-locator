@@ -25,6 +25,8 @@ const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
   );
 };
 
+export default ListeProduit;
+
 export async function getServerSideProps(context) {
   const searchwithRegex = context.query.search;
   const page = context.query.page || 1;
@@ -55,4 +57,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
-export default ListeProduit;
+
+
