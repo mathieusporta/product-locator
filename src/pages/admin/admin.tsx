@@ -4,14 +4,22 @@ import SearchBarAdmin from "../../components/SearchBarAdmin";
 import TableauProduitsAdmin from "../../components/tableauProduitsAdmin";
 import { getDatabase } from "../../database";
 import Pagination from "../../components/pagination";
+import { useSession } from "next-auth/client";
 
 const Admin = ({ products, currentPage, pageCount }) => {
+  const [session] = useSession();
   return (
     <div>
       <Header />
-      <SearchBarAdmin />
-      <TableauProduitsAdmin products={products} />
-      <Pagination currentPage={currentPage} pageCount={pageCount} />
+      {session ? (
+        <>
+          <SearchBarAdmin />
+          <TableauProduitsAdmin products={products} />
+          <Pagination currentPage={currentPage} pageCount={pageCount} />
+        </>
+      ) : (
+        <h2 className="text-center mt-5">🖕🖕🖕🖕🖕 c'est mieux qu'une erreur http quelque chose 🖕🖕🖕🖕🖕</h2>
+      )}
     </div>
   );
 };

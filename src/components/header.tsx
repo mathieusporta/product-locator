@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/client";
 
-
 export const Header = () => {
   const router = useRouter();
   const [session, loading] = useSession();
@@ -26,7 +25,6 @@ export const Header = () => {
     },
   };
   return (
-
     <div className="navbar" style={styles.header}>
       <div>
         <Link href="/" passHref>
@@ -43,11 +41,18 @@ export const Header = () => {
             Liste produit
           </span>
         </Link>
-        <Link href="/admin/admin" passHref>
-          <span style={router.pathname === "/admin/admin" ? styles.active : styles.link}>
-            Admin
-          </span>
-        </Link>
+
+        {session ? (
+          <Link href="/admin/admin" passHref>
+            <span
+              style={
+                router.pathname === "/admin/admin" ? styles.active : styles.link
+              }
+            >
+              Admin
+            </span>
+          </Link>
+        ) : null}
       </div>
 
       <div>
@@ -82,7 +87,6 @@ export const Header = () => {
           )}
         </span>
       </div>
-
     </div>
   );
 };
