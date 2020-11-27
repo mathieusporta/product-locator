@@ -1,17 +1,16 @@
 import React from "react";
-import Link from "next/link";
 import { Header } from "../../components/header";
 import SearchBarAdmin from "../../components/SearchBarAdmin";
 import TableauProduitsAdmin from "../../components/tableauProduitsAdmin";
 import { getDatabase } from "../../database";
-import  Pagination  from "../../components/pagination";
+import Pagination from "../../components/pagination";
 
-const Admin = ({products, currentPage,pageCount}) => {
+const Admin = ({ products, currentPage, pageCount }) => {
   return (
     <div>
       <Header />
       <SearchBarAdmin />
-      <TableauProduitsAdmin products={products}/>
+      <TableauProduitsAdmin products={products} />
       <Pagination currentPage={currentPage} pageCount={pageCount} />
     </div>
   );
