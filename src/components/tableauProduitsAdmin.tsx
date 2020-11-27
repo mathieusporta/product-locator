@@ -35,9 +35,11 @@ const TableauProduitsAdmin = ({ products }) => {
                       <button className="btn btn-warning">Update</button>
                     </Link>
                   </td>
-                  <td>
-                    <button className="btn btn-danger">Delete</button>
-                  </td>
+                  <Link href="/delete/[delete]" as={`/delete/${produit.reference}`}>
+                    <td>
+                      <button className="btn btn-danger">Delete</button>
+                    </td>
+                  </Link>
                 </tr>
               );
             })}

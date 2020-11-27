@@ -15,7 +15,7 @@ const newProduct = () => {
       <h1>Add platform</h1>
       <form
         method="POST"
-        action="/api/newProduct"
+        action="/api/create/newProduct"
         className="bg-light p-4 border border-dark rounded mt-5"
       >
         <fieldset>
