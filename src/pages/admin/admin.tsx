@@ -18,7 +18,7 @@ const Admin = ({ products, currentPage, pageCount }) => {
           <Pagination currentPage={currentPage} pageCount={pageCount} />
         </>
       ) : (
-        <h2 className="text-center mt-5">🖕🖕🖕🖕🖕 c'est mieux qu'une erreur http quelque chose 🖕🖕🖕🖕🖕</h2>
+        <h2 className="text-center mt-5"><img src="https://i.imgur.com/Gp6wNZr.gif" /></h2>
       )}
     </div>
   );

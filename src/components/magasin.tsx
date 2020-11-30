@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBCol, MDBIcon } from "mdbreact";
 import classes from "../../public/styles/magasin.module.css";
+import Link from "next/link";
 
 const MagasinVisu = ({ products, shop, visible }) => {
   return (
@@ -24,13 +25,15 @@ const MagasinVisu = ({ products, shop, visible }) => {
                     {products &&
                       products.map((produit) => {
                         return produit.slug === magasin.slug ? (
+                          <Link href="/rayons" as={`/${produit.reference}`} passHref key={produit._id}>
                           <MDBIcon
                             icon="check"
-                            key={produit._id}
+                            
                             className={
-                              visible === produit._id ? "bg-success" : null
+                              visible === produit._id ? "bg-success check" : null
                             }
                           />
+                          </Link>
                         ) : null;
                       })}
                   </div>
