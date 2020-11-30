@@ -25,10 +25,10 @@ const PaginationVisu = ({ currentPage, pageCount }) => {
         pageRangeDisplayed={5}
         previousLabel="Precedent"
         nextLabel="Suivant"
-        activeClassName="activated"
+        activeClassName="activated bg-light text-primary"
         breakLabel="..."
-        pageClassName="paginate"
-        containerClassName="custom-paginate"
+        pageClassName="paginate "
+        containerClassName="custom-paginate shadow-lg bg-white rounded pl-2 pr-2"
       />
     </div>
   );
