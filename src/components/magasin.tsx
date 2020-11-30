@@ -1,43 +1,43 @@
 import React from "react";
 import { MDBCol, MDBIcon } from "mdbreact";
-
+import classes from "../../public/styles/magasin.module.css";
 
 const MagasinVisu = ({ products, shop, visible }) => {
-
-  const styles = {
-    surface: {
-      padding: "20px",
-    },
-  };
   return (
-    <div>
-      <MDBCol md="6"></MDBCol>
+    <div className="container">
       <hr />
-      <div className="magasin">
-        <div className="topmag">
-          <div className="ligneDeCaisse">Caisse</div>
-          <div className="entree">Entrée</div>
+      <div className={classes.magasin} id="planmag">
+        <div className={classes.topmag}>
+          <div className={classes.reprise}>reprise marchandise</div>
+          <div className={classes.ligneDeCaisse}>Caisse</div>
+          <div className={classes.accueil}>accueil</div>
+          <div className={classes.entree}>Entrée</div>
         </div>
-        {shop &&
-          shop.map((magasin) => {
-            return (
-              <div style={styles.surface} key={magasin._id}>
-                <div className="rayon" id={magasin.slug}>
-                  {magasin.name}
-                  <br />
-                  {products &&
-                    products.map((produit) => {
-                      return produit.slug === magasin.slug ? (
-
-                        <MDBIcon icon="check" key={produit._id}  className={visible === produit._id ? "bg-success" : null}
-                        />
-
-                      ) : null;
-                    })}
+        <div className="row">
+          {shop &&
+            shop.map((magasin) => {
+              return (
+                <div key={magasin._id} className="col-3">
+                  <div className={classes.rayon} id={magasin.slug}>
+                    {magasin.name}
+                    <br />
+                    {products &&
+                      products.map((produit) => {
+                        return produit.slug === magasin.slug ? (
+                          <MDBIcon
+                            icon="check"
+                            key={produit._id}
+                            className={
+                              visible === produit._id ? "bg-success" : null
+                            }
+                          />
+                        ) : null;
+                      })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
       </div>
     </div>
   );

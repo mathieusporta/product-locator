@@ -7,20 +7,20 @@ import TableauProduitVisu from "../components/tableauProduits";
 import SearchBarSection from "../components/SearchBarSection";
 
 const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
-
   const [Visible, setVisible] = React.useState("");
   return (
     <>
       <Header />
-
       <SearchBarSection />
-
       <div>
-        <TableauProduitVisu products={products} visible={Visible} setVisible={setVisible}/>
+        <TableauProduitVisu
+          products={products}
+          visible={Visible}
+          setVisible={setVisible}
+        />
         <PaginationVisu currentPage={currentPage} pageCount={pageCount} />
       </div>
       <MagasinVisu products={products} shop={shop} visible={Visible} />
-
     </>
   );
 };
@@ -57,5 +57,3 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-
