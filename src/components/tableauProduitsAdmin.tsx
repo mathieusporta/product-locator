@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const TableauProduitsAdmin = ({ products }) => {
   return (
-    <>
+    <div className="container">
       <MDBTable>
         <MDBTableHead>
           <tr>
@@ -48,7 +48,7 @@ const TableauProduitsAdmin = ({ products }) => {
       <Link href="/create/newProduct" passHref>
         <button className="btn btn-success w-100">Add</button>
       </Link>
-    </>
+    </div>
   );
 };
 

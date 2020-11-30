@@ -10,7 +10,7 @@ import {
   MDBCardText,
   MDBCardTitle,
 } from "mdbreact";
-import Link from "next/link";
+import SearchBarSection from "../components/SearchBarSection";
 
 const Accueil = () => {
   return (
@@ -30,17 +30,8 @@ const Accueil = () => {
                 aspernatur! Ratione aspernatur similique eligendi vel!
               </MDBCardText>
               <hr className="my-4" />
-              <div className="pt-2">
-                <Link href="/magasins" passHref>
-                  <button color="primary" className="btn btn-primary">
-                    Magasin
-                  </button>
-                </Link>
-                <Link href="/rayons" passHref >
-                  <button color="primary" className="btn btn-primary">
-                    Rayon
-                  </button>
-                </Link>
+              <div className="paginateCenter">
+                <SearchBarSection />
               </div>
             </MDBCardBody>
           </MDBJumbotron>

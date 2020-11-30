@@ -5,6 +5,7 @@ import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 const TableauProduitVisu = ({ products, visible, setVisible }) => {
   
   return (
+    <div className="container">
     <MDBTable>
       <MDBTableHead>
         <tr>
@@ -36,6 +37,7 @@ const TableauProduitVisu = ({ products, visible, setVisible }) => {
           })}
       </MDBTableBody>
     </MDBTable>
+    </div>
   );
 };
 export default TableauProduitVisu;

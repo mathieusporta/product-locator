@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
   return (
     <div>
       <Header />
-      <SearchBarSection />
+      
       <Accueil />
       {children}
     </div>
