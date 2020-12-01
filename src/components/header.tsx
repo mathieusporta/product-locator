@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/client";
@@ -6,6 +6,19 @@ import { signIn, signOut, useSession } from "next-auth/client";
 export const Header = () => {
   const router = useRouter();
   const [session, loading] = useSession();
+  const [user, setUser] = React.useState<{admin: boolean}>();
+  
+  useEffect(() => {
+    fetch("/api/user")
+    .then((response) => {
+      return response.json()
+    })
+    .then((user) => {
+      setUser(user)
+    })
+  },[session])
+  console.log(user);
+  
   const styles = {
     header: {
       margin: 20,
@@ -42,7 +55,7 @@ export const Header = () => {
           </span>
         </Link>
 
-        {session ? (
+        {session && user.admin ?  (
           <Link href="/admin/admin" passHref>
             <span
               style={
@@ -83,6 +96,9 @@ export const Header = () => {
               <button className="btn btn-primary ml-2 btn-sm" onClick={signOut}>
                 Sign out
               </button>
+              <Link href="/user/[update]" as={`/user/${session.user.email}`}>
+              <button>Update your Profile</button>
+              </Link>
             </>
           )}
         </span>

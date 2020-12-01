@@ -12,7 +12,7 @@ const newProduct = () => {
   const [largeurRayon, setLargeurRayon] = React.useState("");
   return (
     <div className="container">
-      <h1>Add platform</h1>
+      <h1>Add Product</h1>
       <form
         method="POST"
         action="/api/create/newProduct"

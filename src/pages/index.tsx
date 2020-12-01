@@ -20,6 +20,7 @@ const Home = ({ products, shop }) => {
 export async function getServerSideProps() {
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
+  // const user = await mongodb.db().collection("users").findOne({email: })
   const products = await mongodb
     .db()
     .collection("products")
@@ -33,5 +34,7 @@ export async function getServerSideProps() {
     },
   };
 }
+
+
 
 export default Home;

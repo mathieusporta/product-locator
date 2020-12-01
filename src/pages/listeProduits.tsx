@@ -6,7 +6,7 @@ import PaginationVisu from "../components/pagination";
 import TableauProduitVisu from "../components/tableauProduits";
 import SearchBarSection from "../components/SearchBarSection";
 
-const ListeProduit = ({ products, shop, currentPage, pageCount }) => {
+const ListeProduit = ({ products, shop, currentPage, pageCount, user }) => {
   const [Visible, setVisible] = React.useState("");
   return (
     <div className="container">

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { getDatabase } from "../../../database";
 const options = {
   // Configure one or more authentication providers
   providers: [
@@ -45,7 +46,20 @@ const options = {
       // console.log("----------------------------------------------");
       // console.log(profile);
       const isAllowedToSignIn = true;
+      const mongodb = await getDatabase();
+      const userDb = await mongodb.db().collection("users").findOne({ email: profile.email }); 
       if (isAllowedToSignIn) {
+
+        if(userDb === null){
+          const newUser = {
+            email: profile.email,
+            name: "",
+            firstname: "",
+            enseigne: "",
+            admin: false,
+          };
+          mongodb.db().collection("users").insertOne(newUser);
+        }
         return Promise.resolve(true);
       } else {
         // Return false to display a default error message

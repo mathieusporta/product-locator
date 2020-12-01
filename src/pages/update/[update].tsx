@@ -12,7 +12,7 @@ const UpdateProduct = ({ products }) => {
   const [largeurRayon, setLargeurRayon] = React.useState(products.y_axis);
   return (
     <div className="container">
-      <h1>Add platform</h1>
+      <h1>Update Product</h1>
       <form
         method="POST"
         action="/api/update/updateProduct"
