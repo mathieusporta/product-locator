@@ -55,7 +55,7 @@ export const Header = () => {
           </span>
         </Link>
 
-        {session && user.admin ?  (
+        {session && user?.admin ?  (
           <Link href="/admin/admin" passHref>
             <span
               style={
@@ -97,7 +97,7 @@ export const Header = () => {
                 Sign out
               </button>
               <Link href="/user/[update]" as={`/user/${session.user.email}`}>
-              <button>Update your Profile</button>
+              <button className="btn btn-primary ml-2 btn-sm">Update your Profile</button>
               </Link>
             </>
           )}

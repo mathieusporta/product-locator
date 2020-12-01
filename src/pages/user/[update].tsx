@@ -6,7 +6,7 @@ const formUpdateUser = ({user}) => {
     return (
         <>
         <FormUpdateUser user={user} />
-        {JSON.stringify(user)}
+        {/* {JSON.stringify(user)} */}
         </>
     )
 }

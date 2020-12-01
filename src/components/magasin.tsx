@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBCol, MDBIcon } from "mdbreact";
+import { MDBIcon } from "mdbreact";
 import classes from "../../public/styles/magasin.module.css";
 import Link from "next/link";
 

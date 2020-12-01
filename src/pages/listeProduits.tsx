@@ -9,20 +9,22 @@ import SearchBarSection from "../components/SearchBarSection";
 const ListeProduit = ({ products, shop, currentPage, pageCount, user }) => {
   const [Visible, setVisible] = React.useState("");
   return (
-    <div className="container">
+    <>
       <Header />
-      <SearchBarSection />
-      <hr />
-      <div>
-        <TableauProduitVisu
-          products={products}
-          visible={Visible}
-          setVisible={setVisible}
-        />
-        <PaginationVisu currentPage={currentPage} pageCount={pageCount} />
+      <div className="container">
+        <SearchBarSection />
+        <hr />
+        <div>
+          <TableauProduitVisu
+            products={products}
+            visible={Visible}
+            setVisible={setVisible}
+          />
+          <PaginationVisu currentPage={currentPage} pageCount={pageCount} />
+        </div>
+        <MagasinVisu products={products} shop={shop} visible={Visible} />
       </div>
-      <MagasinVisu products={products} shop={shop} visible={Visible} />
-    </div>
+    </>
   );
 };
 
