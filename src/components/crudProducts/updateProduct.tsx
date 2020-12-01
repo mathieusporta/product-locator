@@ -1,23 +1,18 @@
 import React from "react";
-import { Header } from "../../components/header";
 import Link from "next/link";
-import { getDatabase } from "../../database";
 
-
-const newProduct = () => {
-  const [reference, setReference] = React.useState("");
-  const [designation, setDesignation] = React.useState("");
-  const [rayon, setRayon] = React.useState("");
-  const [localisationRayon, setLocalisationRayon] = React.useState("");
-  const [largeurRayon, setLargeurRayon] = React.useState("");
+const UpdateProductVisu = ({ products }) => {
+  const [reference, setReference] = React.useState(products.reference);
+  const [designation, setDesignation] = React.useState(products.designation);
+  const [rayon, setRayon] = React.useState(products.rayon);
+  const [hauteurRayon, setHauteurRayon] = React.useState(products.largeurY);
+  const [largeurRayon, setLargeurRayon] = React.useState(products.largeurX);
   return (
-    <>
-    <Header />
     <div className="container">
-      <h1>Add Product</h1>
+      <h1>Modifier un produit</h1>
       <form
         method="POST"
-        action="/api/create/newProduct"
+        action="/api/update/updateProduct"
         className="bg-light p-4 border border-dark rounded mt-5"
       >
         <fieldset>
@@ -28,8 +23,10 @@ const newProduct = () => {
               id="reference"
               type="text"
               name="reference"
+              pattern="[0-9]{8}"
               value={reference}
               onChange={(event) => setReference(event.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -41,6 +38,7 @@ const newProduct = () => {
               name="designation"
               value={designation}
               onChange={(event) => setDesignation(event.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -70,23 +68,6 @@ const newProduct = () => {
           <label htmlFor="localisation-rayon">Localisation Rayon</label>
           <div className="row">
             <div className="form-group col-6">
-              <label htmlFor="localisation-rayon">Hauteur Y</label>
-              <select
-                className="form-control"
-                id="localisation-rayon"
-                name="largeurY"
-                value={localisationRayon}
-                onChange={(event) => setLocalisationRayon(event.target.value)}
-              >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-
-            <div className="form-group col-6">
               <label htmlFor="largeurX">Largeur X</label>
               <select
                 className="form-control"
@@ -98,10 +79,25 @@ const newProduct = () => {
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
-                <option>4</option>
-                <option>5</option>
               </select>
             </div>
+
+            <div className="form-group col-6">
+              <label htmlFor="localisation-rayon">Hauteur Y</label>
+              <select
+                className="form-control"
+                id="localisation-rayon"
+                name="largeurY"
+                value={hauteurRayon}
+                onChange={(event) => setHauteurRayon(event.target.value)}
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <input type="hidden" name="id" value={products._id}></input>
           </div>
         </fieldset>
 
@@ -110,6 +106,7 @@ const newProduct = () => {
             <button
               className="btn btn-success text-center w-100"
               id="validateAdd"
+              type="submit"
             >
               Validate
             </button>
@@ -126,22 +123,8 @@ const newProduct = () => {
           </div>
         </div>
       </form>
+      <hr />
     </div>
-    </>
   );
 };
-
-export default newProduct;
-
-export async function getServerSideProps() {
-  const mongodb = await getDatabase();
-  const shop = await mongodb.db().collection("shop").find().toArray();
-  const products = await mongodb.db().collection("products").find().toArray();
-
-  return {
-    props: {
-      shop: JSON.parse(JSON.stringify(shop)),
-      products: JSON.parse(JSON.stringify(products)),
-    },
-  };
-}
+export default UpdateProductVisu;
