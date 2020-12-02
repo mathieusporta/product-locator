@@ -22,7 +22,7 @@ export default async (request, response) => {
       .db()
       .collection("products")
       .updateOne({ _id: new ObjectId(request.body.id) }, { $set: newProduct });
-    response.redirect("/admin/admin");
+    response.redirect("/update/"+request.body.reference);
     response.end();
   } else {
     response.statusCode = 405;

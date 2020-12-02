@@ -45,13 +45,13 @@ export const Header = () => {
             Home
           </span>
         </Link>
-        <Link href="/listeProduits" passHref>
+        <Link href="/enseignes/liste-enseignes" passHref>
           <span
             style={
-              router.pathname === "/listeProduits" ? styles.active : styles.link
+              router.pathname === "/enseignes/liste-enseignes" ? styles.active : styles.link
             }
           >
-            Liste produit
+            Sélectionner votre magasin
           </span>
         </Link>
 

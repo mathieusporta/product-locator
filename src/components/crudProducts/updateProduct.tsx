@@ -25,6 +25,7 @@ const UpdateProductVisu = ({ products }) => {
               name="reference"
               pattern="[0-9]{8}"
               value={reference}
+              title="coucou"
               onChange={(event) => setReference(event.target.value)}
               required
             />
@@ -36,6 +37,7 @@ const UpdateProductVisu = ({ products }) => {
               id="designation"
               type="text"
               name="designation"
+              pattern="[a-zA-Z ]{3,30}"
               value={designation}
               onChange={(event) => setDesignation(event.target.value)}
               required

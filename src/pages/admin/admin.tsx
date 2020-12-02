@@ -7,7 +7,10 @@ import Pagination from "../../components/pagination";
 import { useSession } from "next-auth/client";
 
 const Admin = ({ products, currentPage, pageCount }) => {
-  const [session] = useSession();
+  const [session, loading] = useSession();
+  if(loading){
+    return null
+  }
   return (
     <div>
       <Header />
