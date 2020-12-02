@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 export const Header = () => {
   const router = useRouter();
   const [session, loading] = useSession();
-  const [user, setUser] = React.useState<{ admin: boolean }>();
+  const [user, setUser] = React.useState<{ admin: boolean, enseigne_id: string }>();
 
   useEffect(() => {
     fetch("/api/user")
@@ -14,10 +14,22 @@ export const Header = () => {
         return response.json();
       })
       .then((user) => {
+        // setUser(user.enseigne_id);
         setUser(user);
       });
   }, [session]);
-  console.log(user);
+  console.log("USERRRRRRRRRRRRRRRSSSSSSSSS");
+
+  // useEffect(() => {
+  //   fetch("/api/user")
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((userEnseigne) => {
+  //       setUser(userEnseigne);
+  //     });
+  // }, [session]);
+  // console.log("USERRRRRRRRRRRRRRRSSSSSSSSS", userEnseigne);
 
   const styles = {
     header: {
@@ -39,6 +51,7 @@ export const Header = () => {
   };
   return (
     <div className="navbar" style={styles.header}>
+      
       <div>
         <Link href="/" passHref>
           <span style={router.pathname === "/" ? styles.active : styles.link}>
@@ -57,7 +70,7 @@ export const Header = () => {
 
 
         {session && user?.admin ? (
-          <Link href="/admin/admin" passHref>
+          <Link href="/test/[test]" as={`/test/${user.enseigne_id}`}  passHref>
             <span
               style={
                 router.pathname === "/admin/admin" ? styles.active : styles.link

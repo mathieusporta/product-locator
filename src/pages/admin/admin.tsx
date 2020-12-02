@@ -9,7 +9,7 @@ import { useSession } from "next-auth/client";
 const Admin = ({ products, currentPage, pageCount }) => {
   const [session, loading] = useSession();
   if(loading){
-    return null
+    return <h1 className="text-center mt-5 text-primary">Loading...</h1>
   }
   return (
     <div>
