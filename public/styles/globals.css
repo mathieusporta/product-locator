@@ -150,3 +150,9 @@ a {
 .iconCheck{
   font-size: xxx-large;
 }
+.cardState{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #0d47a1;
+  
+}

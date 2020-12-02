@@ -1,12 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { getDatabase } from "../../database";
+import CardEnseigne from "../../components/cardEnseigne";
+
 
 const ChooseShop = ({ enseigne }) => {
   return (
     <>
-      <h1>salut</h1>
-      <ul>
+   <CardEnseigne />
+
+      {/* <ul>
         {enseigne.map((magasin) => {
           return (
             <Link
@@ -16,10 +19,11 @@ const ChooseShop = ({ enseigne }) => {
               key={magasin._id}
             >
               <li>{magasin.name}</li>
+              
             </Link>
           );
         })}
-      </ul>
+      </ul> */}
     </>
   );
 };
