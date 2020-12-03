@@ -2,26 +2,17 @@ import React from "react";
 import TableauProduitVisu from "../../components/tableauProduits";
 import { getDatabase } from "../../database";
 import { Header } from "../../components/header";
-import SearchBarAdmin from "../../components/SearchBarAdmin";
 import Pagination from "../../components/pagination";
 import { useRouter } from "next/router";
 import MagasinVisu from "../../components/magasin";
+import SearchBarSection from "../../components/SearchBarSection";
 
-const Test = ({
-  currentPage,
-  pageCount,
-  magId,
-  products,
-  decathlon,
-  shop
-}) => {
+const Test = ({ currentPage, pageCount, magId, products, decathlon, shop }) => {
   const [Visible, setVisible] = React.useState("");
   const router = useRouter();
 
   return (
     <>
-      <Header />
-
       {router.query.liste_produit_par_enseigne ===
       "5fc50531f3c2b1662658430d" ? (
         <h1 className="text-center"> Leroy Merlin</h1>
@@ -29,7 +20,10 @@ const Test = ({
         <h1 className="text-center"> Decathlon</h1>
       )}
 
-      <SearchBarAdmin />
+  
+
+      <Header />
+      <SearchBarSection />
 
       <TableauProduitVisu
         products={magId}
@@ -37,7 +31,13 @@ const Test = ({
         setVisible={setVisible}
       />
       <Pagination currentPage={currentPage} pageCount={pageCount} />
-      <MagasinVisu products={magId} shop={shop} decathlon={decathlon} visible={Visible} />
+
+      <MagasinVisu
+        products={magId}
+        shop={shop}
+        decathlon={decathlon}
+        visible={Visible}
+      />
     </>
   );
 };

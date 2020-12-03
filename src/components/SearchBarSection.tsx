@@ -15,7 +15,7 @@ const SearchBarSection = () => {
           <form
             method="GET"
             className="form-inline mt-4 mb-4"
-            action="/listeProduits"
+            action="/enseigne/[liste_produit_par_enseigne]" 
           >
             <MDBIcon icon="search" />
             <input

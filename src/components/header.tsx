@@ -54,7 +54,7 @@ export const Header = () => {
               router.pathname === "/enseignes/liste-enseignes" ? styles.active : styles.link
             }
           >
-            Sélectionner votre magasin
+            Select shop
           </span>
         </Link>
 
