@@ -17,7 +17,7 @@ const Deleteproduct = ({ products }) => {
           </form>
         </div>
         <div className="col-6">
-          <Link href="/admin/admin">
+          <Link href={`/admin/${products.enseigne_id}`}>
             <button className="btn btn-danger w-100">Cancel</button>
           </Link>
         </div>
@@ -29,13 +29,13 @@ const Deleteproduct = ({ products }) => {
 export default Deleteproduct;
 
 export async function getServerSideProps(context) {
-  const toto = context.params.delete;
+  const deleted = context.params.delete;
   const mongodb = await getDatabase();
   const shop = await mongodb.db().collection("shop").find().toArray();
   const products = await mongodb
     .db()
     .collection("products")
-    .findOne({ reference: toto });
+    .findOne({ reference: deleted });
 
   return {
     props: {

@@ -1,13 +1,16 @@
 import React from "react";
 import { getDatabase } from "../database";
-import RayonVisue from "../components/rayonVisuUpdate";
 
 
-const Rayon = ({ product }) => {
+import RayonVisuClient from "../components/rayonVisuelClient";
+import { Header } from "../components/header";
+
+
+const Rayon = ({product}) => {
   return (
     <>
-      
-      <RayonVisue product={product} />
+      <Header />   
+      <RayonVisuClient product={product}/>
     </>
   );
 };

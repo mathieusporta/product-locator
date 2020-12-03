@@ -15,7 +15,8 @@ const UpdateProductVisu = ({
   const [designation, setDesignation] = React.useState(products.designation);
   const [rayon, setRayon] = React.useState(products.rayon);
 
-  const [session, loading] = useSession();
+  const [session] = useSession();
+
   const [user, setUser] = React.useState<{
     admin: boolean;
     enseigne_id: string;
@@ -131,7 +132,7 @@ const UpdateProductVisu = ({
             </button>
           </div>
           <div className="col-6">
-            <Link href="/admin/admin">
+            <Link href={`/admin/${products.enseigne_id}`}>
               <button
                 type="submit"
                 className="btn btn-danger text-center w-100"
