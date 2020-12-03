@@ -4,6 +4,7 @@ import slugify from "slug";
 export default async (request, response) => {
   const mongodb = await getDatabase();
   const slug = slugify(request.body.rayon);
+  console.log(request.body);
   
   if (request.method === "POST") {
     const newProduct = {
@@ -16,7 +17,7 @@ export default async (request, response) => {
     };
 
     mongodb.db().collection("products").insertOne(newProduct);
-    response.redirect("/admin/admin");
+    response.redirect("/admin/"+request.body.id);
     response.end();
   } else {
     response.statusCode = 405;

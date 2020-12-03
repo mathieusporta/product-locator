@@ -18,18 +18,8 @@ export const Header = () => {
         setUser(user);
       });
   }, [session]);
-  console.log("USERRRRRRRRRRRRRRRSSSSSSSSS");
 
-  // useEffect(() => {
-  //   fetch("/api/user")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((userEnseigne) => {
-  //       setUser(userEnseigne);
-  //     });
-  // }, [session]);
-  // console.log("USERRRRRRRRRRRRRRRSSSSSSSSS", userEnseigne);
+
 
   const styles = {
     header: {
@@ -70,7 +60,7 @@ export const Header = () => {
 
 
         {session && user?.admin ? (
-          <Link href="/test/[test]" as={`/test/${user.enseigne_id}`}  passHref>
+          <Link href="/admin/[admin]" as={`/admin/${user.enseigne_id}`}  passHref>
             <span
               style={
                 router.pathname === "/admin/admin" ? styles.active : styles.link
