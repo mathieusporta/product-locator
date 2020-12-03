@@ -11,7 +11,6 @@ const Test = ({
   currentPage,
   pageCount,
   magId,
-  products,
   decathlon,
   shop
 }) => {

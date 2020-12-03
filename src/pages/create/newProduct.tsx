@@ -130,7 +130,7 @@ const newProduct = ({ products, decathlon, shop }) => {
               </button>
             </div>
             <div className="col-6">
-              <Link href="/admin/admin">
+              <Link href="/">
                 <button
                   type="submit"
                   className="btn btn-danger text-center w-100"
@@ -158,11 +158,13 @@ export async function getServerSideProps() {
 
   const shop = await mongodb.db().collection("shop").find().toArray();
   const decathlon = await mongodb.db().collection("decathlon").find().toArray();
+  const products = await mongodb.db().collection("products").find().toArray();
 
   return {
     props: {
       shop: JSON.parse(JSON.stringify(shop)),
       decathlon: JSON.parse(JSON.stringify(decathlon)),
+      products: JSON.parse(JSON.stringify(products)),
     },
   };
 }
