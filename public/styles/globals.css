@@ -60,6 +60,8 @@ a {
 #confortchauffage {
   width: 100%;
   height: 96%;
+  position: relative;
+  left: 114%;
 }
 #rangementcuisine {
   width: 100%;
@@ -78,13 +80,6 @@ a {
   width: 100%;
   height: 96%;
 }
-
-#confortchauffage {
-  width: 100%;
-  height: 96%;
-  position: relative;
-  left: 114%;
-}
 #sanitaire {
   position: relative;
   width: 330%;
@@ -99,6 +94,89 @@ a {
   position: relative;
   left: 383%;
 }
+#velo {
+  width: 100%;
+  height: 170%;
+}
+#football {
+  width: 100%;
+  height: 40%;
+  position: relative;
+}
+#rugby {
+  width: 100%;
+  height: 96%;
+}
+#natation {
+  width: 100%;
+  height: 96%;
+}
+#dance {
+  width: 100%;
+  height: 152%;
+  position: relative;
+  top: 77%;
+}
+
+#randonnee {
+  width: 100%;
+  height: 40%;
+  position: relative;
+  top: -61%;
+  margin-top: 3rem;
+}
+#chasseetpeche {
+  width: 215%;
+  height: 96%;
+}
+/* #golf {
+width: 100%;
+height: 96%;
+position: relative;
+left: 114%;
+} */
+#musculation {
+  width: 100%;
+  height: 96%;
+}
+#equitation {
+  width: 100%;
+  /* height: 101%; */
+  position: relative;
+  top: -117%;
+  left: 114%;
+  margin-top: 3rem;
+  height: 27vh;
+}
+#golf {
+  width: 100%;
+  height: 96%;
+}
+/* #athlethisme {
+  width: 100%;
+  height: 96%;
+} */
+
+#athlethisme {
+  width: 100%;
+  height: 96%;
+  position: relative;
+  left: 114%;
+}
+#volleyball {
+  position: relative;
+  width: 330%;
+  height: 25%;
+  top: 104%;
+  left: -231%;
+}
+ #tennis {
+  top: -331%;
+  width: 60%;
+  height: 24%;
+  position: relative;
+  left: 383%;
+} 
 .activated {
   font-weight: bold;
   background-color: #0d47a1;

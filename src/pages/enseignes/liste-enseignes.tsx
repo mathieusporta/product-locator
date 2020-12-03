@@ -8,22 +8,6 @@ const ChooseShop = ({ enseigne }) => {
   return (
     <>
    <CardEnseigne />
-
-      {/* <ul>
-        {enseigne.map((magasin) => {
-          return (
-            <Link
-              href="/enseignes/[liste-produit-par-enseigne]"
-              as={`/enseignes/${magasin._id}`}
-              passHref
-              key={magasin._id}
-            >
-              <li>{magasin.name}</li>
-              
-            </Link>
-          );
-        })}
-      </ul> */}
     </>
   );
 };

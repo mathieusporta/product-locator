@@ -1,6 +1,6 @@
 import React from "react";
 import { getDatabase } from "../database";
-import RayonVisue from "../components/rayonVisu";
+import RayonVisue from "../components/rayonVisuUpdate";
 
 
 const Rayon = ({ product }) => {

@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/client";
 
-const UpdateProductVisu = ({ products }) => {
+const UpdateProductVisu = ({
+  products,
+  shop,
+  decathlon,
+  setHauteurRayon,
+  setLargeurRayon,
+  largeurRayon,
+  hauteurRayon,
+}) => {
   const [reference, setReference] = React.useState(products.reference);
   const [designation, setDesignation] = React.useState(products.designation);
   const [rayon, setRayon] = React.useState(products.rayon);
-  const [hauteurRayon, setHauteurRayon] = React.useState(products.largeurY);
-  const [largeurRayon, setLargeurRayon] = React.useState(products.largeurX);
+
+  const [session, loading] = useSession();
+  const [user, setUser] = React.useState<{
+    admin: boolean;
+    enseigne_id: string;
+  }>();
+
+  useEffect(() => {
+    fetch("/api/user")
+      .then((response) => {
+        return response.json();
+      })
+      .then((user) => {
+        setUser(user);
+      });
+  }, [session]);
   return (
     <div className="container">
       <h1>Modifier un produit</h1>
@@ -52,19 +75,13 @@ const UpdateProductVisu = ({ products }) => {
               value={rayon}
               onChange={(event) => setRayon(event.target.value)}
             >
-              <option>Matériaux</option>
-              <option>Menuiserie</option>
-              <option>Électricité/Plomberie</option>
-              <option>Outillage</option>
-              <option>Rangement/Cuisine</option>
-              <option>Monde Sol</option>
-              <option>Sanitaire</option>
-              <option>Confort/Chauffage</option>
-              <option>Jardin</option>
-              <option>Quincaillerie</option>
-              <option>Peinture</option>
-              <option>Décoration</option>
-              <option>Luminaire</option>
+              {session && user?.enseigne_id === "5fc50531f3c2b1662658430d"
+                ? shop.map((lm) => {
+                    return <option key={lm._id}>{lm.name}</option>;
+                  })
+                : decathlon.map((dt) => {
+                    return <option key={dt._id}>{dt.name}</option>;
+                  })}
             </select>
           </div>
           <label htmlFor="localisation-rayon">Localisation Rayon</label>
