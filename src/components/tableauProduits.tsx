@@ -13,15 +13,18 @@ const TableauProduitVisu = ({ products, visible, setVisible }) => {
             <th>Rayon</th>
           </tr>
         </MDBTableHead>
-        {/* {JSON.stringify(products)} */}
+
 
         <MDBTableBody>
           {products &&
             products.map((produit, index) => {
               return (
+
+                
                 <tr
                   key={produit._id}
-                  className={visible === produit._id ? "bg-success" : null}
+                  className={visible === produit._id ? "bg-success pointer" : null}
+
                   onClick={() => setVisible(produit._id)}
                 >
                   <td>{index + 1}</td>
@@ -29,6 +32,7 @@ const TableauProduitVisu = ({ products, visible, setVisible }) => {
                   <td>{produit.designation}</td>
                   <td>{produit.rayon}</td>
                 </tr>
+
               );
             })}
         </MDBTableBody>

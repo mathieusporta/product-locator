@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Header } from "../../components/header";
 import SearchBarAdmin from "../../components/SearchBarAdmin";
@@ -59,3 +60,4 @@ export async function getServerSideProps(context) {
 }
 
 export default Admin;
+

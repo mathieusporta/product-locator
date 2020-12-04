@@ -14,6 +14,7 @@ export default async (request, response) => {
       largeurY: request.body.largeurY,
       largeurX: request.body.largeurX,
       slug: slug,
+      enseigne_id: request.body.id
     };
 
     mongodb.db().collection("products").insertOne(newProduct);

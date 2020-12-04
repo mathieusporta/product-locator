@@ -2,11 +2,6 @@ import React from "react";
 import { MDBCol, MDBIcon } from "mdbreact";
 
 const SearchBarSection = () => {
-  const styles = {
-    surface: {
-      padding: "20px",
-    },
-  };
 
   return (
     <>
@@ -25,7 +20,7 @@ const SearchBarSection = () => {
               aria-label="Search"
               name="search"
             />
-            {/* <input type="hidden" value={products} name="designation" /> */}
+           
           </form>
         </MDBCol>
       </div>

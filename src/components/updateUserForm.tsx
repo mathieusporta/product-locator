@@ -1,14 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import { Header } from "./header";
 
 const updateUser = ({ user }) => {
     const [name, setName] = React.useState(user.name);
     const [firstname, setFirstname] = React.useState(user.firstname);
     const [enseigne, setEnseigne] = React.useState(user.enseigne);
-    // const [role, setRole] = React.useState(user.role);
+
   return (
+    <>
+    <Header />
     <div className="container">
-      <h1>Update Product</h1>
+      <h1 className="mt-5">Update User</h1>
       <form
         method="POST"
         action="/api/update/updateUser"
@@ -76,6 +79,7 @@ const updateUser = ({ user }) => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

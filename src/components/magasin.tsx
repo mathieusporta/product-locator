@@ -37,6 +37,9 @@ const MagasinVisu = ({ products, shop, visible, decathlon }) => {
                                   passHref
                                   key={produit._id}
                                 >
+
+                                  <button className="ml-2">
+
                                   <MDBIcon
                                     icon="check"
                                     className={
@@ -45,6 +48,9 @@ const MagasinVisu = ({ products, shop, visible, decathlon }) => {
                                         : null
                                     }
                                   />
+
+                                  </button>
+
                                 </Link>
                               ) : null;
                             })}

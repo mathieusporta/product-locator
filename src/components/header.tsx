@@ -14,7 +14,6 @@ export const Header = () => {
         return response.json();
       })
       .then((user) => {
-        // setUser(user.enseigne_id);
         setUser(user);
       });
   }, [session]);
@@ -29,6 +28,7 @@ export const Header = () => {
     },
     link: {
       margin: 15,
+      cursor: "pointer",
     },
     active: {
       cursor: "pointer",

@@ -78,6 +78,9 @@ const Accueil = () => {
                 </MDBCardText>
                 <hr className="my-4" />
                 <div className="paginateCenter">
+
+                  {/* //SearchBarSection non fonctionnel a la version 1*/}
+
                   <SearchBarSection />
                 </div>
               </MDBCardBody>

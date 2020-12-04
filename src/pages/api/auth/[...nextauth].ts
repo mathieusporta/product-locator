@@ -40,17 +40,14 @@ const options = {
      *                           Return `false` to deny access
      */
     signIn: async (user, account, profile) => {
-      // console.log(user.email);
-      // console.log("----------------------------------------------");
-      // console.log(account);
-      // console.log("----------------------------------------------");
-      // console.log(profile);
       const isAllowedToSignIn = true;
       const mongodb = await getDatabase();
-      const userDb = await mongodb.db().collection("users").findOne({ email: profile.email }); 
+      const userDb = await mongodb
+        .db()
+        .collection("users")
+        .findOne({ email: profile.email });
       if (isAllowedToSignIn) {
-
-        if(userDb === null){
+        if (userDb === null) {
           const newUser = {
             email: profile.email,
             name: "",
@@ -62,11 +59,7 @@ const options = {
         }
         return Promise.resolve(true);
       } else {
-        // Return false to display a default error message
         return Promise.resolve(false);
-        // You can also Reject this callback with an Error or with a URL:
-        // return Promise.reject(new Error('error message')) // Redirect to error page
-        // return Promise.reject('/')        // Redirect to a URL
       }
     },
 
@@ -74,7 +67,5 @@ const options = {
       return Promise.resolve("http://localhost:3000/");
     },
   },
-  // A database is optional, but required to persist accounts in a database
-  //   database: process.env.DATABASE_URL,
 };
 export default (req, res) => NextAuth(req, res, options);

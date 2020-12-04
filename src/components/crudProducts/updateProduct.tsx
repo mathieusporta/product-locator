@@ -14,7 +14,6 @@ const UpdateProductVisu = ({
   const [reference, setReference] = React.useState(products.reference);
   const [designation, setDesignation] = React.useState(products.designation);
   const [rayon, setRayon] = React.useState(products.rayon);
-
   const [session] = useSession();
 
   const [user, setUser] = React.useState<{
