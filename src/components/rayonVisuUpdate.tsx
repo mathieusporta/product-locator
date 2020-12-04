@@ -11,7 +11,6 @@ const RayonVisue = ({
   const [idProduct, setIdProduct] = useState(
     `${product.largeurX} / ${product.largeurY}`
   );
-  // const idProduct = `${product.largeurX} / ${product.largeurY}`;
 
   const styles = {
     row: {
@@ -189,7 +188,7 @@ const RayonVisue = ({
             onClick={() => {
               setLargeurRayon("3");
               setHauteurRayon("1");
-              setIdProduct("3 / 1")
+              setIdProduct("3 / 1");
             }}
           >
             {idProduct === "3 / 1" ? (

@@ -92,7 +92,7 @@ a {
   width: 60%;
   height: 24%;
   position: relative;
-  left: 383%;
+  left: 375%;
 }
 #velo {
   width: 100%;
@@ -171,7 +171,7 @@ left: 114%;
   width: 60%;
   height: 24%;
   position: relative;
-  left: 383%;
+  left: 375%;
 }
 .activated {
   font-weight: bold;
@@ -247,4 +247,7 @@ left: 114%;
 .bouton1 {
   position: relative;
   bottom: 15px;
+}
+.logoEnseigne{
+  height: 130px;
 }

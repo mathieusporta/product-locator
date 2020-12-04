@@ -12,7 +12,6 @@ import {
   MDBCarousel,
 } from "mdbreact";
 import SearchBarSection from "../components/SearchBarSection";
-import { Carousel } from "react-bootstrap";
 
 const Accueil = () => {
   return (
@@ -78,6 +77,7 @@ const Accueil = () => {
                 </MDBCardText>
                 <hr className="my-4" />
                 <div className="paginateCenter">
+                  {/* //SearchBarSection non fonctionnel a la version 1*/}
                   <SearchBarSection />
                 </div>
               </MDBCardBody>

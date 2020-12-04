@@ -42,7 +42,7 @@ export async function getServerSideProps(context) {
   const magId = await mongodb
     .db()
     .collection("products")
-    .find({ enseigne_id: mag, designation: new RegExp(searchwithRegex, "i")})
+    .find({ enseigne_id: mag, designation: new RegExp(searchwithRegex, "i") })
     .skip(page > 0 ? (page - 1) * nPerPage : 0)
     .limit(nPerPage)
     .toArray();
@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
   const productsTotal = await mongodb
     .db()
     .collection("products")
-    .find({ enseigne_id: mag,  designation: new RegExp(searchwithRegex, "i")})
+    .find({ enseigne_id: mag, designation: new RegExp(searchwithRegex, "i") })
     .count();
 
   return {

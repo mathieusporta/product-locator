@@ -7,13 +7,7 @@ import Pagination from "../../components/pagination";
 import { useRouter } from "next/router";
 import MagasinVisu from "../../components/magasin";
 
-const Test = ({
-  currentPage,
-  pageCount,
-  magId,
-  decathlon,
-  shop
-}) => {
+const Test = ({ currentPage, pageCount, magId, decathlon, shop }) => {
   const [Visible, setVisible] = React.useState("");
   const router = useRouter();
 
@@ -36,7 +30,12 @@ const Test = ({
         setVisible={setVisible}
       />
       <Pagination currentPage={currentPage} pageCount={pageCount} />
-      <MagasinVisu products={magId} shop={shop} decathlon={decathlon} visible={Visible} />
+      <MagasinVisu
+        products={magId}
+        shop={shop}
+        decathlon={decathlon}
+        visible={Visible}
+      />
     </>
   );
 };
@@ -56,8 +55,6 @@ export async function getServerSideProps(context) {
     .limit(nPerPage)
     .toArray();
   const shop = await mongodb.db().collection("shop").find().toArray();
-  const enseigne = await mongodb.db().collection("enseigne").find().toArray();
-  const users = await mongodb.db().collection("users").find().toArray();
   const decathlon = await mongodb.db().collection("decathlon").find().toArray();
   const products = await mongodb.db().collection("products").find().toArray();
   const productsTotal = await mongodb
@@ -70,8 +67,6 @@ export async function getServerSideProps(context) {
     props: {
       shop: JSON.parse(JSON.stringify(shop)),
       products: JSON.parse(JSON.stringify(products)),
-      enseigne: JSON.parse(JSON.stringify(enseigne)),
-      users: JSON.parse(JSON.stringify(users)),
       decathlon: JSON.parse(JSON.stringify(decathlon)),
       magId: JSON.parse(JSON.stringify(magId)),
       pageCount: Math.ceil(productsTotal / nPerPage),

@@ -16,7 +16,6 @@ const TableauProduitsAdmin = ({ products }) => {
             <th>Delete</th>
           </tr>
         </MDBTableHead>
-        {/* {JSON.stringify(products)} */}
 
         <MDBTableBody>
           {products &&
@@ -35,7 +34,10 @@ const TableauProduitsAdmin = ({ products }) => {
                       <button className="btn btn-warning">Update</button>
                     </Link>
                   </td>
-                  <Link href="/delete/[delete]" as={`/delete/${produit.reference}`}>
+                  <Link
+                    href="/delete/[delete]"
+                    as={`/delete/${produit.reference}`}
+                  >
                     <td>
                       <button className="btn btn-danger">Delete</button>
                     </td>

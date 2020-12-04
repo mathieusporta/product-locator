@@ -16,8 +16,6 @@ export default async (request, response) => {
       slug: slug,
     };
 
-    // response.json(newProduct);
-
     mongodb
       .db()
       .collection("products")

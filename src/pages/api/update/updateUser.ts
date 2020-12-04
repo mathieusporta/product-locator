@@ -12,8 +12,6 @@ export default async (request, response) => {
       enseigne: request.body.enseigne,
     };
 
-    // response.json(newProduct);
-
     mongodb
       .db()
       .collection("users")
