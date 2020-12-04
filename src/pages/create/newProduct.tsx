@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { Header } from "../../components/header";
+
 import { useSession } from "next-auth/client";
 import RayonVisuCreat from "../../components/rayonVisuCreat";
+
 import { getDatabase } from "../../database";
 import AddProductForm from "../../components/crudProducts/addProductsForm";
 
+
 const newProduct = ({ decathlon, shop }) => {
+
   const [reference, setReference] = React.useState("");
   const [designation, setDesignation] = React.useState("");
   const [rayon, setRayon] = React.useState("");
   const [hauteurRayon, setHauteurRayon] = React.useState("");
   const [largeurRayon, setLargeurRayon] = React.useState("");
+
 
   const [session, loading] = useSession();
   const [user, setUser] = React.useState<{
@@ -53,6 +58,7 @@ const newProduct = ({ decathlon, shop }) => {
       <hr />
       <h3 className="text-center mt-4 mb-4 ">Représentation du rayon </h3>
       <RayonVisuCreat />
+
     </>
   );
 };
@@ -64,13 +70,17 @@ export async function getServerSideProps() {
 
   const shop = await mongodb.db().collection("shop").find().toArray();
   const decathlon = await mongodb.db().collection("decathlon").find().toArray();
+
   const products = await mongodb.db().collection("products").find().toArray();
+
 
   return {
     props: {
       shop: JSON.parse(JSON.stringify(shop)),
       decathlon: JSON.parse(JSON.stringify(decathlon)),
+
       products: JSON.parse(JSON.stringify(products)),
+
     },
   };
 }

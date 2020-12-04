@@ -4,7 +4,9 @@ import CardEnseigne from "../../components/cardEnseigne";
 const ChooseShop = () => {
   return (
     <>
+
       <CardEnseigne />
+
     </>
   );
 };

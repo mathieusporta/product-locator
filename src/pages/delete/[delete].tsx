@@ -17,6 +17,7 @@ const Deleteproduct = ({ products }) => {
             <form method="Post" action="/api/delete/deleteProduct">
               <input type="hidden" name="id" value={products._id}></input>
 
+
               <button className="btn btn-success w-100">Delete</button>
             </form>
           </div>
@@ -25,6 +26,7 @@ const Deleteproduct = ({ products }) => {
               <button className="btn btn-danger w-100">Cancel</button>
             </Link>
           </div>
+
         </div>
       </div>
     </>

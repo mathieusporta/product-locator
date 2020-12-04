@@ -7,6 +7,7 @@ const CardExample = () => {
   return (
     <>
       <Header />
+
       {/* //SearchBarAdmin non fonctionnel en V1 */}
       {/* <SearchBarAdmin /> */}
       <div className="container">

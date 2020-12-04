@@ -21,6 +21,7 @@ const UpdateProduct = ({ products, shop, decathlon }) => {
         return response.json();
       })
       .then((user) => {
+
         setUser(user);
       });
   }, [session]);

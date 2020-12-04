@@ -7,7 +7,9 @@ import Pagination from "../../components/pagination";
 import { useRouter } from "next/router";
 import MagasinVisu from "../../components/magasin";
 
+
 const Test = ({ currentPage, pageCount, magId, decathlon, shop }) => {
+
   const [Visible, setVisible] = React.useState("");
   const router = useRouter();
 
@@ -30,12 +32,14 @@ const Test = ({ currentPage, pageCount, magId, decathlon, shop }) => {
         setVisible={setVisible}
       />
       <Pagination currentPage={currentPage} pageCount={pageCount} />
+
       <MagasinVisu
         products={magId}
         shop={shop}
         decathlon={decathlon}
         visible={Visible}
       />
+
     </>
   );
 };

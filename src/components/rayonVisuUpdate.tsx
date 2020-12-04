@@ -12,6 +12,7 @@ const RayonVisue = ({
     `${product.largeurX} / ${product.largeurY}`
   );
 
+
   const styles = {
     row: {
       height: "80px",
@@ -188,7 +189,9 @@ const RayonVisue = ({
             onClick={() => {
               setLargeurRayon("3");
               setHauteurRayon("1");
+
               setIdProduct("3 / 1");
+
             }}
           >
             {idProduct === "3 / 1" ? (

@@ -1,4 +1,6 @@
+
 import React from "react";
+
 import { MDBContainer, MDBRow, MDBCol, MDBIcon } from "mdbreact";
 
 const RayonVisuClient = ({ product }) => {
@@ -12,6 +14,7 @@ const RayonVisuClient = ({ product }) => {
 
   return (
     <div>
+
       <h1 className="text-center mb-5 mt-5">Your product is localize here </h1>
       <h3 className="text-center">
         Designation :{" "}
@@ -23,6 +26,7 @@ const RayonVisuClient = ({ product }) => {
         Reference :{" "}
         <span className="mb-5 badge badge-primary">{product.reference}</span>
       </h3>
+
       <MDBContainer>
         <MDBRow style={styles.row}>
           <MDBCol size="4" id="1 / 4">
